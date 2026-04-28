@@ -8,7 +8,7 @@
 ```bash
 # Terminal 1 — start the API server
 cd mumzworld-moment-engine
-uvicorn api.main:app --reload
+python -m uvicorn api.main:app --port 8000
 
 # Terminal 2 — ready for curl commands
 cd mumzworld-moment-engine
