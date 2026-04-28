@@ -1,0 +1,112 @@
+[
+  {
+    "case_id": 1, "group": "easy_notify",
+    "description": "C-001 child ~180 days old → Starting Solids",
+    "customer_id": "C-001",
+    "expected_notify": true,
+    "expected_milestone_contains": "Solids",
+    "notes": "Should fire MS-001, ≥1 product rec"
+  },
+  {
+    "case_id": 2, "group": "easy_notify",
+    "description": "C-002 child ~358 days → First Steps / Walking",
+    "customer_id": "C-002",
+    "expected_notify": true,
+    "expected_milestone_contains": "Steps",
+    "notes": "Walking milestone, age-appropriate walker/shoes"
+  },
+  {
+    "case_id": 3, "group": "easy_notify",
+    "description": "C-003 child ~143 days → Teething Peak",
+    "customer_id": "C-003",
+    "expected_notify": true,
+    "expected_milestone_contains": "Teeth",
+    "notes": "Teething products recommended"
+  },
+  {
+    "case_id": 4, "group": "easy_notify",
+    "description": "C-001 Arabic customer → AR copy present and natural",
+    "customer_id": "C-001",
+    "expected_notify": true,
+    "expected_ar_present": true,
+    "notes": "AR copy must not be null or empty"
+  },
+  {
+    "case_id": 5, "group": "easy_notify",
+    "description": "C-005 child ~325 days → First Birthday Party Prep",
+    "customer_id": "C-005",
+    "expected_notify": true,
+    "expected_milestone_contains": "Birthday",
+    "notes": "Birthday party milestone"
+  },
+  {
+    "case_id": 6, "group": "easy_silent",
+    "description": "C-007 child ~500 days → dead zone, no milestone",
+    "customer_id": "C-007",
+    "expected_notify": false,
+    "notes": "copies must be null NOT empty string, recs=[]"
+  },
+  {
+    "case_id": 7, "group": "easy_silent",
+    "description": "C-011 child ~50 days → between milestones",
+    "customer_id": "C-011",
+    "expected_notify": false,
+    "notes": "reasoning must explain gap"
+  },
+  {
+    "case_id": 8, "group": "easy_silent",
+    "description": "C-009 child ~1 day old → newborn, first milestone weeks away",
+    "customer_id": "C-009",
+    "expected_notify": false,
+    "notes": "no false positive for newborn"
+  },
+  {
+    "case_id": 9, "group": "easy_silent",
+    "description": "C-020 child 14 years old → aged out of catalog",
+    "customer_id": "C-020",
+    "expected_notify": false,
+    "notes": "reasoning cites aged out"
+  },
+  {
+    "case_id": 10, "group": "easy_silent",
+    "description": "C-018 no child_dob → new account",
+    "customer_id": "C-018",
+    "expected_notify": false,
+    "notes": "reasoning = no age data"
+  },
+  {
+    "case_id": 11, "group": "adversarial",
+    "description": "C-012 milestone real but ALL feeding products owned",
+    "customer_id": "C-012",
+    "expected_notify": true,
+    "notes": "notify=True (milestone real), recs may be empty (all owned)"
+  },
+  {
+    "case_id": 12, "group": "adversarial",
+    "description": "C-FAKE unknown customer ID",
+    "customer_id": "C-FAKE",
+    "expected_notify": false,
+    "notes": "graceful null, no 500, no crash"
+  },
+  {
+    "case_id": 13, "group": "adversarial",
+    "description": "C-013 milestone exactly 3 days away → confidence boundary",
+    "customer_id": "C-013",
+    "expected_notify": true,
+    "notes": "confidence should be ≥0.75 at 3 days"
+  },
+  {
+    "case_id": 14, "group": "adversarial",
+    "description": "C-014 MS-002 and MS-005 both at 90d → nearest wins",
+    "customer_id": "C-014",
+    "expected_notify": true,
+    "notes": "only nearest milestone triggered, not both"
+  },
+  {
+    "case_id": 15, "group": "adversarial",
+    "description": "C-019 no child_dob → new account (second no-DOB test)",
+    "customer_id": "C-019",
+    "expected_notify": false,
+    "notes": "should_notify=False, no invented milestone"
+  }
+]

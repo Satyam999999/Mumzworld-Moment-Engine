@@ -1,0 +1,252 @@
+[
+  {
+    "rule_id": "MS-001",
+    "name_en": "Starting Solids",
+    "name_ar": "بداية الأكل الصلب",
+    "typical_age_days": 180,
+    "window_days": 30,
+    "description": "Baby ready for pureed/soft foods",
+    "search_query": "baby first foods weaning starter kit solid feeding",
+    "safety_note": "BPA-free products only. No honey before 12 months."
+  },
+  {
+    "rule_id": "MS-002",
+    "name_en": "Tummy Time / Rolling Over",
+    "name_ar": "الوقت على البطن والتقلب",
+    "typical_age_days": 90,
+    "window_days": 20,
+    "description": "Baby developing neck/core strength",
+    "search_query": "tummy time mat play gym activity baby",
+    "safety_note": "Ensure flat safe surface."
+  },
+  {
+    "rule_id": "MS-003",
+    "name_en": "Sitting Unsupported",
+    "name_ar": "الجلوس بدون دعم",
+    "typical_age_days": 180,
+    "window_days": 20,
+    "description": "Baby learning to sit independently",
+    "search_query": "baby seat support pillow activity chair",
+    "safety_note": "Never leave unsupported on elevated surfaces."
+  },
+  {
+    "rule_id": "MS-004",
+    "name_en": "First Steps / Walking",
+    "name_ar": "الخطوات الأولى",
+    "typical_age_days": 365,
+    "window_days": 30,
+    "description": "Baby beginning to walk",
+    "search_query": "baby first walker push toy walking shoes",
+    "safety_note": "Soft-soled shoes recommended."
+  },
+  {
+    "rule_id": "MS-005",
+    "name_en": "Transition from Bassinet to Crib",
+    "name_ar": "الانتقال من المهد إلى السرير",
+    "typical_age_days": 90,
+    "window_days": 20,
+    "description": "Baby outgrowing bassinet",
+    "search_query": "baby crib toddler bed mattress sleep safe",
+    "safety_note": "Firm mattress, no loose bedding."
+  },
+  {
+    "rule_id": "MS-006",
+    "name_en": "Dropping Night Feeds",
+    "name_ar": "التوقف عن الرضاعة الليلية",
+    "typical_age_days": 120,
+    "window_days": 20,
+    "description": "Baby sleeping longer stretches",
+    "search_query": "baby sleep aid white noise soother",
+    "safety_note": "Consult pediatrician before stopping feeds."
+  },
+  {
+    "rule_id": "MS-007",
+    "name_en": "Starting Day Care / Nursery",
+    "name_ar": "بداية الحضانة",
+    "typical_age_days": 270,
+    "window_days": 30,
+    "description": "Baby starting nursery or day care",
+    "search_query": "nursery bag diaper bag baby essentials daycare",
+    "safety_note": "Label all items."
+  },
+  {
+    "rule_id": "MS-008",
+    "name_en": "Moving to Forward-Facing Car Seat",
+    "name_ar": "الانتقال لمقعد السيارة الأمامي",
+    "typical_age_days": 365,
+    "window_days": 30,
+    "description": "Child ready for forward-facing seat",
+    "search_query": "forward facing car seat toddler safety",
+    "safety_note": "Must meet weight/height minimums."
+  },
+  {
+    "rule_id": "MS-009",
+    "name_en": "Transition to Sippy Cup",
+    "name_ar": "الانتقال لكوب الشفاطة",
+    "typical_age_days": 180,
+    "window_days": 30,
+    "description": "Baby learning to drink from cup",
+    "search_query": "sippy cup trainer cup baby drinking weaning",
+    "safety_note": "BPA-free only."
+  },
+  {
+    "rule_id": "MS-010",
+    "name_en": "First Teeth / Teething Peak",
+    "name_ar": "ذروة التسنين",
+    "typical_age_days": 150,
+    "window_days": 20,
+    "description": "Baby teething begins",
+    "search_query": "teething ring gel soother chew toy baby",
+    "safety_note": "No aspirin. Use teething-safe products."
+  },
+  {
+    "rule_id": "MS-011",
+    "name_en": "Bath Seat Transition",
+    "name_ar": "الانتقال لكرسي الاستحمام",
+    "typical_age_days": 150,
+    "window_days": 20,
+    "description": "Baby ready for bath seat",
+    "search_query": "baby bath seat ring support tub",
+    "safety_note": "Never leave unattended in water."
+  },
+  {
+    "rule_id": "MS-012",
+    "name_en": "Potty Training Readiness",
+    "name_ar": "الاستعداد لتدريب الحمام",
+    "typical_age_days": 540,
+    "window_days": 30,
+    "description": "Toddler showing potty readiness signs",
+    "search_query": "potty training seat toilet toddler step stool",
+    "safety_note": "Child-led approach recommended."
+  },
+  {
+    "rule_id": "MS-013",
+    "name_en": "Toddler Bed Transition",
+    "name_ar": "الانتقال لسرير الأطفال الصغار",
+    "typical_age_days": 540,
+    "window_days": 30,
+    "description": "Child moving from crib to toddler bed",
+    "search_query": "toddler bed rail guard mattress sleep",
+    "safety_note": "Use bed rail for safety."
+  },
+  {
+    "rule_id": "MS-014",
+    "name_en": "First Backpack / Nursery Bag",
+    "name_ar": "أول حقيبة ظهر",
+    "typical_age_days": 900,
+    "window_days": 30,
+    "description": "Child starting to carry own bag",
+    "search_query": "toddler backpack nursery bag kids school",
+    "safety_note": "Lightweight, ergonomic."
+  },
+  {
+    "rule_id": "MS-015",
+    "name_en": "Outdoor / Tricycle Stage",
+    "name_ar": "مرحلة الدراجة ثلاثية العجلات",
+    "typical_age_days": 730,
+    "window_days": 30,
+    "description": "Child ready for outdoor riding toys",
+    "search_query": "tricycle balance bike outdoor toddler ride",
+    "safety_note": "Helmet required."
+  },
+  {
+    "rule_id": "MS-016",
+    "name_en": "Arts and Crafts Stage",
+    "name_ar": "مرحلة الفنون والحرف",
+    "typical_age_days": 1095,
+    "window_days": 30,
+    "description": "Child ready for creative play",
+    "search_query": "art craft kit toddler paint clay non-toxic",
+    "safety_note": "Non-toxic materials only."
+  },
+  {
+    "rule_id": "MS-017",
+    "name_en": "Transition from Stroller to Walking",
+    "name_ar": "التحول من العربة للمشي",
+    "typical_age_days": 548,
+    "window_days": 30,
+    "description": "Toddler preferring to walk",
+    "search_query": "lightweight stroller travel toddler buggy",
+    "safety_note": "Keep stroller for long trips."
+  },
+  {
+    "rule_id": "MS-018",
+    "name_en": "Toothbrushing Introduction",
+    "name_ar": "بداية تنظيف الأسنان",
+    "typical_age_days": 210,
+    "window_days": 20,
+    "description": "Baby ready for first toothbrush",
+    "search_query": "baby toothbrush toothpaste fluoride infant",
+    "safety_note": "Use fluoride-free paste under 2 years."
+  },
+  {
+    "rule_id": "MS-019",
+    "name_en": "First Shoes",
+    "name_ar": "أول حذاء",
+    "typical_age_days": 330,
+    "window_days": 20,
+    "description": "Baby ready for first proper shoes",
+    "search_query": "baby first shoes soft sole walking infant",
+    "safety_note": "Measure feet before buying."
+  },
+  {
+    "rule_id": "MS-020",
+    "name_en": "Swimwear / Pool Stage",
+    "name_ar": "مرحلة المسبح وملابس السباحة",
+    "typical_age_days": 365,
+    "window_days": 30,
+    "description": "Child ready for water play",
+    "search_query": "baby swimwear float arm bands pool toddler",
+    "safety_note": "Constant supervision near water."
+  },
+  {
+    "rule_id": "MS-021",
+    "name_en": "First Birthday Party Prep",
+    "name_ar": "التحضير لعيد الميلاد الأول",
+    "typical_age_days": 335,
+    "window_days": 20,
+    "description": "Child approaching first birthday",
+    "search_query": "birthday party supplies baby cake outfit",
+    "safety_note": "Avoid choking hazards in decorations."
+  },
+  {
+    "rule_id": "MS-022",
+    "name_en": "Pre-School Readiness",
+    "name_ar": "الاستعداد لما قبل المدرسة",
+    "typical_age_days": 1095,
+    "window_days": 30,
+    "description": "Child approaching pre-school age",
+    "search_query": "preschool bag stationery lunch box toddler",
+    "safety_note": "Ensure child's name on all items."
+  },
+  {
+    "rule_id": "MS-023",
+    "name_en": "Reading Readiness / First Books",
+    "name_ar": "الاستعداد للقراءة",
+    "typical_age_days": 548,
+    "window_days": 30,
+    "description": "Child ready for picture books",
+    "search_query": "baby books board book toddler reading",
+    "safety_note": "Board books for durability."
+  },
+  {
+    "rule_id": "MS-024",
+    "name_en": "Weaning from Bottle",
+    "name_ar": "الفطام من الرضاعة",
+    "typical_age_days": 365,
+    "window_days": 30,
+    "description": "Baby ready to stop bottle feeding",
+    "search_query": "sippy cup open cup training bottle weaning",
+    "safety_note": "Gradual transition recommended."
+  },
+  {
+    "rule_id": "MS-025",
+    "name_en": "Pregnancy — Third Trimester Hospital Bag",
+    "name_ar": "حقيبة المستشفى للثلث الثالث",
+    "typical_age_days": 245,
+    "window_days": 30,
+    "description": "Mother in third trimester preparing hospital bag",
+    "search_query": "hospital bag maternity newborn essentials labor",
+    "safety_note": "Pack 4-6 weeks before due date."
+  }
+]

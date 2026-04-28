@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+pydantic>=2.0
+langgraph
+langchain
+langchain-core
+sentence-transformers
+faiss-cpu
+httpx
+python-dotenv
+rich

@@ -1,0 +1,909 @@
+[
+  {
+    "product_id": "MW-001",
+    "name_en": "Chicco First Foods Weaning Set",
+    "name_ar": "طقم الفطام الأول من شيكو",
+    "category": "feeding",
+    "milestone_tags": [
+      "MS-001",
+      "MS-009"
+    ],
+    "age_min_months": 4,
+    "age_max_months": 12,
+    "price_aed": 89.0,
+    "safety_certs": [
+      "BPA-free",
+      "EN14350"
+    ],
+    "incompatible_with": [],
+    "description_en": "Complete weaning starter kit with BPA-free bowls, soft-tip spoon, and silicone bib. Designed for babies beginning solid foods at 4-6 months.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-002",
+    "name_en": "Philips Avent Silicone Feeding Spoons",
+    "name_ar": "ملاعق التغذية السيليكون من فيليبس أفنت",
+    "category": "feeding",
+    "milestone_tags": [
+      "MS-001"
+    ],
+    "age_min_months": 4,
+    "age_max_months": 12,
+    "price_aed": 45.0,
+    "safety_certs": [
+      "BPA-free"
+    ],
+    "incompatible_with": [],
+    "description_en": "Set of 6 soft silicone weaning spoons in staged sizes. Heat-sensing tip alerts if food is too hot for baby.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-003",
+    "name_en": "NUK First Choice Weaning Bowl Set",
+    "name_ar": "طقم أوعية الفطام من نوك",
+    "category": "feeding",
+    "milestone_tags": [
+      "MS-001"
+    ],
+    "age_min_months": 4,
+    "age_max_months": 18,
+    "price_aed": 65.0,
+    "safety_certs": [
+      "BPA-free"
+    ],
+    "incompatible_with": [],
+    "description_en": "4-piece stackable weaning bowl set with anti-slip base and airtight lids. Dishwasher safe and microwave compatible.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-004",
+    "name_en": "Munchkin Stay-Put Suction Bowls",
+    "name_ar": "أوعية المص الثابتة من مانشكين",
+    "category": "feeding",
+    "milestone_tags": [
+      "MS-001",
+      "MS-009"
+    ],
+    "age_min_months": 6,
+    "age_max_months": 24,
+    "price_aed": 55.0,
+    "safety_certs": [
+      "BPA-free"
+    ],
+    "incompatible_with": [],
+    "description_en": "Toddler suction bowls that grip any smooth surface. Ideal for self-feeding babies aged 6 months and up.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-005",
+    "name_en": "Chicco Easy Meal High Chair",
+    "name_ar": "كرسي الأكل إيزي ميل من شيكو",
+    "category": "feeding",
+    "milestone_tags": [
+      "MS-001"
+    ],
+    "age_min_months": 6,
+    "age_max_months": 36,
+    "price_aed": 349.0,
+    "safety_certs": [
+      "EN14988"
+    ],
+    "incompatible_with": [],
+    "description_en": "Adjustable high chair with 7 height positions and 3-position reclining backrest. Easy-clean removable tray.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-006",
+    "name_en": "MAM Silicone Trainer Sippy Cup",
+    "name_ar": "كوب التدريب السيليكوني من ماما",
+    "category": "feeding",
+    "milestone_tags": [
+      "MS-009"
+    ],
+    "age_min_months": 6,
+    "age_max_months": 18,
+    "price_aed": 49.0,
+    "safety_certs": [
+      "BPA-free"
+    ],
+    "incompatible_with": [],
+    "description_en": "Leak-proof trainer cup with soft silicone spout and easy-grip handles. Transitions baby from bottle to cup.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-007",
+    "name_en": "Pigeon Baby Food Maker Blender",
+    "name_ar": "خلاط طعام الأطفال من بيجون",
+    "category": "feeding",
+    "milestone_tags": [
+      "MS-001"
+    ],
+    "age_min_months": 4,
+    "age_max_months": 24,
+    "price_aed": 129.0,
+    "safety_certs": [
+      "BPA-free"
+    ],
+    "incompatible_with": [],
+    "description_en": "All-in-one baby food maker that steams and blends in one bowl. Compact design for UAE kitchen counter.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-008",
+    "name_en": "Dr Brown's Anti-Colic Bottle Set",
+    "name_ar": "طقم زجاجات مضادة للمغص من دكتور براون",
+    "category": "feeding",
+    "milestone_tags": [
+      "MS-006"
+    ],
+    "age_min_months": 0,
+    "age_max_months": 12,
+    "price_aed": 185.0,
+    "safety_certs": [
+      "BPA-free",
+      "EN14350"
+    ],
+    "incompatible_with": [],
+    "description_en": "Set of 6 anti-colic bottles with internal vent system that reduces colic, gas, and spit-up. Newborn-safe nipple flow.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-009",
+    "name_en": "Chicco KeyFit 30 Infant Car Seat",
+    "name_ar": "مقعد سيارة للرضع كي فيت 30 من شيكو",
+    "category": "car_seats",
+    "milestone_tags": [
+      "MS-005",
+      "MS-008"
+    ],
+    "age_min_months": 0,
+    "age_max_months": 12,
+    "price_aed": 699.0,
+    "safety_certs": [
+      "ECE R44/04"
+    ],
+    "incompatible_with": [
+      "MW-010"
+    ],
+    "description_en": "Rear-facing infant car seat for newborns up to 13kg. One-second LATCH install system and EPS energy-absorbing foam.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-010",
+    "name_en": "Graco 4Ever DLX Forward-Facing Car Seat",
+    "name_ar": "مقعد سيارة أمامي 4 في 1 من جريكو",
+    "category": "car_seats",
+    "milestone_tags": [
+      "MS-008"
+    ],
+    "age_min_months": 9,
+    "age_max_months": 144,
+    "price_aed": 1299.0,
+    "safety_certs": [
+      "ECE R129"
+    ],
+    "incompatible_with": [
+      "MW-009"
+    ],
+    "description_en": "4-in-1 convertible car seat grows from infant to booster (4-45kg). Forward-facing from 9kg. Steel-reinforced frame.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-011",
+    "name_en": "Joie i-Spin 360 Rotatable Car Seat",
+    "name_ar": "مقعد سيارة دوار 360 من جوي",
+    "category": "car_seats",
+    "milestone_tags": [
+      "MS-008"
+    ],
+    "age_min_months": 0,
+    "age_max_months": 48,
+    "price_aed": 1599.0,
+    "safety_certs": [
+      "ECE R129"
+    ],
+    "incompatible_with": [],
+    "description_en": "Group 0+/1/2 car seat with 360-degree rotation for easy loading. Rear and forward facing. Fits from birth to 25kg.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-012",
+    "name_en": "Britax Römer Baby-Safe 5Z2",
+    "name_ar": "مقعد سيارة بيبي سيف من بريتاكس",
+    "category": "car_seats",
+    "milestone_tags": [
+      "MS-005"
+    ],
+    "age_min_months": 0,
+    "age_max_months": 15,
+    "price_aed": 1899.0,
+    "safety_certs": [
+      "ECE R129"
+    ],
+    "incompatible_with": [],
+    "description_en": "Rear-facing infant carrier certified for newborns to 15 months. Foldable ZipFix base and anti-rebound bar.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-013",
+    "name_en": "Maxi-Cosi Pebble 360 Pro",
+    "name_ar": "مقعد سيارة بيبل 360 برو من ماكسي كوزي",
+    "category": "car_seats",
+    "milestone_tags": [
+      "MS-005"
+    ],
+    "age_min_months": 0,
+    "age_max_months": 15,
+    "price_aed": 2199.0,
+    "safety_certs": [
+      "ECE R129"
+    ],
+    "incompatible_with": [],
+    "description_en": "Premium 360-degree infant car seat with one-hand rotation. I-Size safety certified. Fits Maxi-Cosi bases.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-014",
+    "name_en": "Chicco Seat3Fit Forward-Facing",
+    "name_ar": "مقعد Seat3Fit للأمام من شيكو",
+    "category": "car_seats",
+    "milestone_tags": [
+      "MS-008"
+    ],
+    "age_min_months": 9,
+    "age_max_months": 144,
+    "price_aed": 999.0,
+    "safety_certs": [
+      "ECE R44/04"
+    ],
+    "incompatible_with": [],
+    "description_en": "Convertible car seat from 9 to 36kg. Grows with child from toddler to school age. Side protection and ISOFIX.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-015",
+    "name_en": "Silver Cross Wave Newborn Stroller",
+    "name_ar": "عربة الأطفال ويف من سيلفر كروس",
+    "category": "strollers",
+    "milestone_tags": [
+      "MS-017"
+    ],
+    "age_min_months": 0,
+    "age_max_months": 36,
+    "price_aed": 3499.0,
+    "safety_certs": [
+      "EN1888"
+    ],
+    "incompatible_with": [],
+    "description_en": "Premium all-terrain stroller with reversible seat and carrycot option. Suitable from birth to 25kg.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-016",
+    "name_en": "Bugaboo Bee6 Compact Stroller",
+    "name_ar": "عربة بي 6 المدمجة من بوقابو",
+    "category": "strollers",
+    "milestone_tags": [
+      "MS-017"
+    ],
+    "age_min_months": 6,
+    "age_max_months": 48,
+    "price_aed": 2999.0,
+    "safety_certs": [
+      "EN1888"
+    ],
+    "incompatible_with": [],
+    "description_en": "Lightweight urban stroller folds in one move. Reversible seat, large sun canopy, and puncture-proof tires.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-017",
+    "name_en": "Maclaren Techno XT Umbrella Stroller",
+    "name_ar": "عربة تكنو إكس تي المظلة من ماكلارين",
+    "category": "strollers",
+    "milestone_tags": [
+      "MS-017"
+    ],
+    "age_min_months": 6,
+    "age_max_months": 48,
+    "price_aed": 999.0,
+    "safety_certs": [
+      "EN1888"
+    ],
+    "incompatible_with": [],
+    "description_en": "Lightweight aluminium umbrella stroller for urban parents. Folds in seconds, padded seat, UV50+ canopy.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-018",
+    "name_en": "Joie Versatrax Pushchair",
+    "name_ar": "عربة ڤيرساتراكس من جوي",
+    "category": "strollers",
+    "milestone_tags": [
+      "MS-017"
+    ],
+    "age_min_months": 0,
+    "age_max_months": 36,
+    "price_aed": 1599.0,
+    "safety_certs": [
+      "EN1888"
+    ],
+    "incompatible_with": [],
+    "description_en": "Modular pushchair with 3 seat configurations. Compact fold, extended canopy, and all-terrain wheels.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-019",
+    "name_en": "Baby Jogger City Mini GT2",
+    "name_ar": "عربة سيتي ميني GT2 من بيبي جوجر",
+    "category": "strollers",
+    "milestone_tags": [
+      "MS-017"
+    ],
+    "age_min_months": 0,
+    "age_max_months": 36,
+    "price_aed": 1899.0,
+    "safety_certs": [
+      "EN1888"
+    ],
+    "incompatible_with": [],
+    "description_en": "Single-hand quick-fold stroller with all-terrain rubber tires. Suitable from birth with lie-flat seat.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-020",
+    "name_en": "SNOO Smart Bassinet",
+    "name_ar": "مهد ذكي سنو",
+    "category": "sleep",
+    "milestone_tags": [
+      "MS-005",
+      "MS-006"
+    ],
+    "age_min_months": 0,
+    "age_max_months": 6,
+    "price_aed": 3999.0,
+    "safety_certs": [
+      "ASTM F2194"
+    ],
+    "incompatible_with": [
+      "MW-021"
+    ],
+    "description_en": "Responsive bassinet that automatically soothes crying babies with gentle motion and white noise. App-controlled.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-021",
+    "name_en": "Chicco Next2Me Forever Bedside Crib",
+    "name_ar": "سرير جانبي نيكست تو مي من شيكو",
+    "category": "sleep",
+    "milestone_tags": [
+      "MS-005"
+    ],
+    "age_min_months": 0,
+    "age_max_months": 9,
+    "price_aed": 1199.0,
+    "safety_certs": [
+      "EN1130"
+    ],
+    "incompatible_with": [
+      "MW-020"
+    ],
+    "description_en": "Co-sleeper that attaches securely to parents' bed. Adjusts to 11 heights. Converts to standalone crib.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-022",
+    "name_en": "Stokke Sleepi Convertible Crib",
+    "name_ar": "سرير قابل للتحويل سليبي من ستوكي",
+    "category": "sleep",
+    "milestone_tags": [
+      "MS-005",
+      "MS-013"
+    ],
+    "age_min_months": 0,
+    "age_max_months": 60,
+    "price_aed": 2499.0,
+    "safety_certs": [
+      "EN716"
+    ],
+    "incompatible_with": [],
+    "description_en": "Oval crib converts from bassinet to crib to junior bed. Grows from birth to age 5. Sustainably sourced wood.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-023",
+    "name_en": "Bubba Blue Breathe-Eze Crib Mattress",
+    "name_ar": "مرتبة سرير قابلة للتنفس من بوبا بلو",
+    "category": "sleep",
+    "milestone_tags": [
+      "MS-005",
+      "MS-013"
+    ],
+    "age_min_months": 0,
+    "age_max_months": 36,
+    "price_aed": 299.0,
+    "safety_certs": [
+      "OEKO-TEX"
+    ],
+    "incompatible_with": [],
+    "description_en": "Open-cell foam crib mattress with breathable mesh cover. Temperature-regulating and hypoallergenic.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-024",
+    "name_en": "Aden + Anais Dream Muslin Blanket",
+    "name_ar": "بطانية موسلين ادن وأناس",
+    "category": "sleep",
+    "milestone_tags": [
+      "MS-006"
+    ],
+    "age_min_months": 0,
+    "age_max_months": 24,
+    "price_aed": 149.0,
+    "safety_certs": [
+      "OEKO-TEX"
+    ],
+    "incompatible_with": [],
+    "description_en": "100% cotton muslin swaddle blanket. Breathable, softens with every wash. Ideal for UAE warm climate.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-025",
+    "name_en": "Summer Infant Newborn-to-Toddler Bath Tub",
+    "name_ar": "حوض استحمام من سامر إنفانت",
+    "category": "bath",
+    "milestone_tags": [
+      "MS-011"
+    ],
+    "age_min_months": 0,
+    "age_max_months": 24,
+    "price_aed": 159.0,
+    "safety_certs": [
+      "ASTM F2670"
+    ],
+    "incompatible_with": [],
+    "description_en": "Convertible bath tub with sling insert for newborns and seat for toddlers. Non-slip base and drain plug.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-026",
+    "name_en": "Stokke Flexi Bath Foldable Baby Tub",
+    "name_ar": "حوض استحمام قابل للطي من ستوكي",
+    "category": "bath",
+    "milestone_tags": [
+      "MS-011"
+    ],
+    "age_min_months": 0,
+    "age_max_months": 48,
+    "price_aed": 249.0,
+    "safety_certs": [],
+    "incompatible_with": [],
+    "description_en": "Collapsible bath tub that folds flat for storage and travel. Ergonomic newborn insert sold separately.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-027",
+    "name_en": "Angelcare Baby Bath Seat Ring",
+    "name_ar": "كرسي حمام الأطفال من أنجيلكير",
+    "category": "bath",
+    "milestone_tags": [
+      "MS-011"
+    ],
+    "age_min_months": 6,
+    "age_max_months": 18,
+    "price_aed": 179.0,
+    "safety_certs": [
+      "EN17022"
+    ],
+    "incompatible_with": [],
+    "description_en": "Soft mesh bath seat with suction feet for stability. Supports sitting baby safely. Easy to fold and store.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-028",
+    "name_en": "Johnson's Baby Skincare Gift Set",
+    "name_ar": "طقم العناية بالبشرة من جونسون",
+    "category": "bath",
+    "milestone_tags": [
+      "MS-011"
+    ],
+    "age_min_months": 0,
+    "age_max_months": 12,
+    "price_aed": 89.0,
+    "safety_certs": [],
+    "incompatible_with": [],
+    "description_en": "Complete baby skincare set: gentle shampoo, lotion, baby wash, and oil. Clinically tested, tear-free formula.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-029",
+    "name_en": "Babymoov Aquadots Bath Seat",
+    "name_ar": "كرسي الاستحمام أكوادوتس من بيبيموف",
+    "category": "bath",
+    "milestone_tags": [
+      "MS-011"
+    ],
+    "age_min_months": 6,
+    "age_max_months": 18,
+    "price_aed": 199.0,
+    "safety_certs": [],
+    "incompatible_with": [],
+    "description_en": "Inflatable bath seat with 6 suction cups for stability. Folds flat. BPA-free PVC, easy to clean.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-030",
+    "name_en": "Fisher-Price Tummy Time Play Mat",
+    "name_ar": "حصيرة وقت البطن من فيشر برايس",
+    "category": "toys",
+    "milestone_tags": [
+      "MS-002",
+      "MS-003"
+    ],
+    "age_min_months": 0,
+    "age_max_months": 6,
+    "price_aed": 199.0,
+    "safety_certs": [
+      "ASTM F963"
+    ],
+    "incompatible_with": [],
+    "description_en": "Cushioned play mat with high-contrast patterns and hanging toys to encourage tummy time and early development.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-031",
+    "name_en": "Skip Hop Explore & More Baby Walker",
+    "name_ar": "ووكر الاستكشاف من سكيب هوب",
+    "category": "toys",
+    "milestone_tags": [
+      "MS-004"
+    ],
+    "age_min_months": 9,
+    "age_max_months": 36,
+    "price_aed": 389.0,
+    "safety_certs": [
+      "ASTM F977"
+    ],
+    "incompatible_with": [],
+    "description_en": "3-stage activity walker with removable activity station. Non-slip rubber tips and height-adjustable frame.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-032",
+    "name_en": "VTech Sit-to-Stand Learning Walker",
+    "name_ar": "ووكر التعلم من في تيك",
+    "category": "toys",
+    "milestone_tags": [
+      "MS-004"
+    ],
+    "age_min_months": 9,
+    "age_max_months": 36,
+    "price_aed": 299.0,
+    "safety_certs": [
+      "EN71"
+    ],
+    "incompatible_with": [],
+    "description_en": "Interactive learning walker with piano keys, shape sorter, and educational songs. Grows from seated play to walking.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-033",
+    "name_en": "Melissa & Doug Wooden Activity Set",
+    "name_ar": "طقم ألعاب خشبية من ميليسا وداوج",
+    "category": "toys",
+    "milestone_tags": [
+      "MS-016",
+      "MS-022"
+    ],
+    "age_min_months": 36,
+    "age_max_months": 72,
+    "price_aed": 249.0,
+    "safety_certs": [
+      "EN71",
+      "ASTM F963"
+    ],
+    "incompatible_with": [],
+    "description_en": "10-piece wooden activity set with bead maze, shape puzzle, and peg board. Non-toxic paint. Develops fine motor skills.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-034",
+    "name_en": "Baby Einstein Sensory Discovery Kit",
+    "name_ar": "مجموعة الاستكشاف الحسي من بيبي آينشتاين",
+    "category": "toys",
+    "milestone_tags": [
+      "MS-002",
+      "MS-003"
+    ],
+    "age_min_months": 0,
+    "age_max_months": 12,
+    "price_aed": 189.0,
+    "safety_certs": [
+      "EN71"
+    ],
+    "incompatible_with": [],
+    "description_en": "Multi-sensory play kit with crinkle cards, teether, and activity book. Stimulates vision and touch from birth.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-035",
+    "name_en": "Nuby Bounce n Play Activity Ball",
+    "name_ar": "كرة النشاط من نوبي",
+    "category": "toys",
+    "milestone_tags": [
+      "MS-003",
+      "MS-004"
+    ],
+    "age_min_months": 6,
+    "age_max_months": 24,
+    "price_aed": 99.0,
+    "safety_certs": [
+      "BPA-free",
+      "EN71"
+    ],
+    "incompatible_with": [],
+    "description_en": "Textured sensory ball that encourages crawling and walking. Rattle sounds inside, easy-grip bumps on surface.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-036",
+    "name_en": "LEGO DUPLO Classic Brick Box",
+    "name_ar": "صندوق مكعبات ليجو دوبلو",
+    "category": "toys",
+    "milestone_tags": [
+      "MS-016"
+    ],
+    "age_min_months": 24,
+    "age_max_months": 60,
+    "price_aed": 199.0,
+    "safety_certs": [
+      "EN71"
+    ],
+    "incompatible_with": [],
+    "description_en": "65-piece DUPLO brick set for creative building play. Large bricks safe for toddlers. Develops spatial reasoning.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-037",
+    "name_en": "Tiny Love 3-in-1 Rocker Napper",
+    "name_ar": "مهدة ومرجوحة 3 في 1 من تيني لوف",
+    "category": "toys",
+    "milestone_tags": [
+      "MS-002"
+    ],
+    "age_min_months": 0,
+    "age_max_months": 9,
+    "price_aed": 899.0,
+    "safety_certs": [
+      "ASTM F2194"
+    ],
+    "incompatible_with": [],
+    "description_en": "Convertible rocker, napper, and stationary seat. Vibration and music modes. Folds flat for storage or travel.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-038",
+    "name_en": "Stride Rite Baby's First Walkers",
+    "name_ar": "أول أحذية المشي من سترايد رايت",
+    "category": "shoes",
+    "milestone_tags": [
+      "MS-004",
+      "MS-019"
+    ],
+    "age_min_months": 6,
+    "age_max_months": 24,
+    "price_aed": 189.0,
+    "safety_certs": [],
+    "incompatible_with": [],
+    "description_en": "Soft leather first-step shoes with wide toe box and flexible sole. Machine washable. Supports natural foot development.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-039",
+    "name_en": "Clarks Baby Softly Dreamz First Shoes",
+    "name_ar": "أول أحذية من كلاركس",
+    "category": "shoes",
+    "milestone_tags": [
+      "MS-019"
+    ],
+    "age_min_months": 9,
+    "age_max_months": 18,
+    "price_aed": 219.0,
+    "safety_certs": [],
+    "incompatible_with": [],
+    "description_en": "Leather pre-walking shoes with extra-soft sole for early walkers. Breathable lining and easy velcro fastening.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-040",
+    "name_en": "Carter's Baby Essential Wardrobe Set",
+    "name_ar": "طقم ملابس أساسية من كارترز",
+    "category": "clothing",
+    "milestone_tags": [
+      "MS-007"
+    ],
+    "age_min_months": 0,
+    "age_max_months": 24,
+    "price_aed": 299.0,
+    "safety_certs": [
+      "OEKO-TEX"
+    ],
+    "incompatible_with": [],
+    "description_en": "10-piece essential wardrobe set: bodysuits, sleepers, and pants. 100% cotton, snap closures for easy dressing.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-041",
+    "name_en": "Purebaby Organic Cotton Onesie 5-Pack",
+    "name_ar": "طقم 5 أوزة أورجانيك من بيوربيبي",
+    "category": "clothing",
+    "milestone_tags": [
+      "MS-007"
+    ],
+    "age_min_months": 0,
+    "age_max_months": 12,
+    "price_aed": 149.0,
+    "safety_certs": [
+      "GOTS",
+      "OEKO-TEX"
+    ],
+    "incompatible_with": [],
+    "description_en": "GOTS certified organic cotton onesies. Envelope neckline for easy dressing. Tagless for sensitive skin.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-042",
+    "name_en": "Skip Hop Zoo Mini Backpack",
+    "name_ar": "حقيبة ظهر ميني حديقة الحيوان",
+    "category": "bags",
+    "milestone_tags": [
+      "MS-007",
+      "MS-014"
+    ],
+    "age_min_months": 12,
+    "age_max_months": 48,
+    "price_aed": 119.0,
+    "safety_certs": [],
+    "incompatible_with": [],
+    "description_en": "Toddler backpack with padded back panel and chest clip. 3L capacity, animal character designs, easy-clean lining.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-043",
+    "name_en": "JuJuBe Be Prepared Diaper Bag",
+    "name_ar": "حقيبة حفاضات من جوجوبي",
+    "category": "bags",
+    "milestone_tags": [
+      "MS-007"
+    ],
+    "age_min_months": 0,
+    "age_max_months": 36,
+    "price_aed": 549.0,
+    "safety_certs": [],
+    "incompatible_with": [],
+    "description_en": "Large diaper backpack with 18 pockets and stroller clips. Machine washable lining, insulated bottle pockets.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-044",
+    "name_en": "Pottery Barn Kids Classic Backpack",
+    "name_ar": "حقيبة ظهر كلاسيك للأطفال",
+    "category": "bags",
+    "milestone_tags": [
+      "MS-014",
+      "MS-022"
+    ],
+    "age_min_months": 24,
+    "age_max_months": 72,
+    "price_aed": 299.0,
+    "safety_certs": [],
+    "incompatible_with": [],
+    "description_en": "Durable canvas backpack for nursery and pre-school. Monogrammable, padded straps, and wipeable lining.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-045",
+    "name_en": "OiOi Vegan Leather Nappy Bag",
+    "name_ar": "حقيبة حفاضات جلد نباتي من أوي أوي",
+    "category": "bags",
+    "milestone_tags": [
+      "MS-007"
+    ],
+    "age_min_months": 0,
+    "age_max_months": 36,
+    "price_aed": 449.0,
+    "safety_certs": [],
+    "incompatible_with": [],
+    "description_en": "Stylish vegan leather nappy bag with 12 internal pockets, changing mat, and insulated bottle holder.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-046",
+    "name_en": "Sophie La Girafe Teething Toy",
+    "name_ar": "لعبة التسنين سوفي الزرافة",
+    "category": "health",
+    "milestone_tags": [
+      "MS-010"
+    ],
+    "age_min_months": 3,
+    "age_max_months": 18,
+    "price_aed": 129.0,
+    "safety_certs": [
+      "EN71",
+      "LFGB"
+    ],
+    "incompatible_with": [],
+    "description_en": "Classic natural rubber teething toy. Multiple textures to soothe sore gums. 100% natural rubber and food-grade paint.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-047",
+    "name_en": "NUK Genius Silicone Teether Set",
+    "name_ar": "طقم مضغاط السيليكون الجينيوس من نوك",
+    "category": "health",
+    "milestone_tags": [
+      "MS-010"
+    ],
+    "age_min_months": 3,
+    "age_max_months": 18,
+    "price_aed": 89.0,
+    "safety_certs": [
+      "BPA-free",
+      "EN71"
+    ],
+    "incompatible_with": [],
+    "description_en": "3-piece silicone teether set in different textures. Fridge-safe to soothe inflamed gums. Easy-grip design.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-048",
+    "name_en": "Brush-Baby Chewable Toothbrush Set",
+    "name_ar": "طقم فرشاة أسنان قابلة للمضغ من براش بيبي",
+    "category": "health",
+    "milestone_tags": [
+      "MS-010",
+      "MS-018"
+    ],
+    "age_min_months": 0,
+    "age_max_months": 18,
+    "price_aed": 79.0,
+    "safety_certs": [
+      "BPA-free"
+    ],
+    "incompatible_with": [],
+    "description_en": "Silicone finger toothbrush doubles as teether. Introduces gum massage and oral hygiene from 0 months.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-049",
+    "name_en": "CURAPROX Baby Toothbrush Set",
+    "name_ar": "طقم فرشاة أسنان من كيوراوبروكس",
+    "category": "health",
+    "milestone_tags": [
+      "MS-018"
+    ],
+    "age_min_months": 0,
+    "age_max_months": 36,
+    "price_aed": 65.0,
+    "safety_certs": [],
+    "incompatible_with": [],
+    "description_en": "Ultra-soft 12,000-filament baby toothbrush with ergonomic handle. Ideal for introducing tooth brushing at 7 months.",
+    "in_stock": true
+  },
+  {
+    "product_id": "MW-050",
+    "name_en": "NoseFrida SnotSucker + Gripe Water Bundle",
+    "name_ar": "حزمة NoseFrida ومياه الكمون",
+    "category": "health",
+    "milestone_tags": [
+      "MS-006"
+    ],
+    "age_min_months": 0,
+    "age_max_months": 12,
+    "price_aed": 119.0,
+    "safety_certs": [],
+    "incompatible_with": [],
+    "description_en": "Nasal aspirator with 20 hygienic filters plus gripe water for gas relief. Essential newborn health bundle.",
+    "in_stock": true
+  }
+]

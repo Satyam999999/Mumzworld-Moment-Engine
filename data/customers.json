@@ -1,0 +1,204 @@
+[
+  {
+    "customer_id": "C-001",
+    "name": "Fatima Al-Rashid",
+    "language": "ar",
+    "child_dob": "2025-11-04",
+    "purchase_history": [
+      "MW-043"
+    ],
+    "country": "UAE"
+  },
+  {
+    "customer_id": "C-002",
+    "name": "Sara Mitchell",
+    "language": "en",
+    "child_dob": "2025-05-05",
+    "purchase_history": [
+      "MW-015"
+    ],
+    "country": "UAE"
+  },
+  {
+    "customer_id": "C-003",
+    "name": "Nour Al-Ahmad",
+    "language": "ar",
+    "child_dob": "2025-12-06",
+    "purchase_history": [
+      "MW-024"
+    ],
+    "country": "KSA"
+  },
+  {
+    "customer_id": "C-004",
+    "name": "Hessa Al-Mansouri",
+    "language": "ar",
+    "child_dob": "2026-02-04",
+    "purchase_history": [
+      "MW-028"
+    ],
+    "country": "UAE"
+  },
+  {
+    "customer_id": "C-005",
+    "name": "Emma Thompson",
+    "language": "en",
+    "child_dob": "2025-06-07",
+    "purchase_history": [
+      "MW-009",
+      "MW-040"
+    ],
+    "country": "UAE"
+  },
+  {
+    "customer_id": "C-006",
+    "name": "Maryam Al-Zaabi",
+    "language": "ar",
+    "child_dob": "2024-11-13",
+    "purchase_history": [
+      "MW-022"
+    ],
+    "country": "KSA"
+  },
+  {
+    "customer_id": "C-007",
+    "name": "Jessica Williams",
+    "language": "en",
+    "child_dob": "2024-12-14",
+    "purchase_history": [
+      "MW-017"
+    ],
+    "country": "UAE"
+  },
+  {
+    "customer_id": "C-008",
+    "name": "Aisha Al-Blooshi",
+    "language": "ar",
+    "child_dob": "2025-10-07",
+    "purchase_history": [
+      "MW-028"
+    ],
+    "country": "Kuwait"
+  },
+  {
+    "customer_id": "C-009",
+    "name": "Chloe Davidson",
+    "language": "en",
+    "child_dob": "2026-04-27",
+    "purchase_history": [],
+    "country": "UAE"
+  },
+  {
+    "customer_id": "C-010",
+    "name": "Shaikha Al-Nuaimi",
+    "language": "ar",
+    "child_dob": "2024-05-05",
+    "purchase_history": [
+      "MW-042"
+    ],
+    "country": "KSA"
+  },
+  {
+    "customer_id": "C-011",
+    "name": "Rachel Green",
+    "language": "en",
+    "child_dob": "2026-03-09",
+    "purchase_history": [],
+    "country": "UAE"
+  },
+  {
+    "customer_id": "C-012",
+    "name": "Noura Al-Rashidi",
+    "language": "ar",
+    "child_dob": "2025-11-04",
+    "purchase_history": [
+      "MW-001",
+      "MW-002",
+      "MW-003",
+      "MW-004",
+      "MW-005",
+      "MW-006",
+      "MW-007"
+    ],
+    "country": "UAE",
+    "note": "all feeding owned"
+  },
+  {
+    "customer_id": "C-013",
+    "name": "Amy Johnson",
+    "language": "en",
+    "child_dob": "2024-11-07",
+    "purchase_history": [
+      "MW-036"
+    ],
+    "country": "KSA"
+  },
+  {
+    "customer_id": "C-014",
+    "name": "Reem Al-Maktoum",
+    "language": "ar",
+    "child_dob": "2026-02-07",
+    "purchase_history": [
+      "MW-037"
+    ],
+    "country": "UAE"
+  },
+  {
+    "customer_id": "C-015",
+    "name": "Mariam Al-Suwaidi",
+    "language": "ar",
+    "child_dob": null,
+    "purchase_history": [],
+    "country": "KSA",
+    "note": "pregnant"
+  },
+  {
+    "customer_id": "C-016",
+    "name": "Olivia Brown",
+    "language": "en",
+    "child_dob": "2025-08-07",
+    "purchase_history": [
+      "MW-040"
+    ],
+    "country": "Kuwait"
+  },
+  {
+    "customer_id": "C-017",
+    "name": "Sarah Collins",
+    "language": "en",
+    "child_dob": "2024-10-30",
+    "purchase_history": [
+      "MW-017"
+    ],
+    "country": "UAE"
+  },
+  {
+    "customer_id": "C-018",
+    "name": "Sophie Anderson",
+    "language": "en",
+    "child_dob": null,
+    "purchase_history": [],
+    "country": "UAE",
+    "note": "new account"
+  },
+  {
+    "customer_id": "C-019",
+    "name": "Khalood Al-Shamsi",
+    "language": "ar",
+    "child_dob": null,
+    "purchase_history": [],
+    "country": "KSA",
+    "note": "new account"
+  },
+  {
+    "customer_id": "C-020",
+    "name": "Linda Carson",
+    "language": "en",
+    "child_dob": "2012-05-01",
+    "purchase_history": [
+      "MW-010"
+    ],
+    "country": "UAE",
+    "note": "14yo aged out"
+  }
+]
