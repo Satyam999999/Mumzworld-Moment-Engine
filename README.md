@@ -120,7 +120,7 @@ System prompt rules enforced in `translate_ar_node`:
 | Tool | Purpose |
 |------|---------|
 | **Groq** · llama-3.3-70b-versatile (free) | EN copy generation + Gulf Arabic re-authoring |
-| **FAISS** · TF-IDF + cosine rerank | Product semantic retrieval |
+| **fastembed** · BAAI/bge-small-en-v1.5 (ONNX) + FAISS | Neural sentence embeddings + semantic retrieval + cosine rerank |
 | **LangGraph** | 5-node state machine with explicit silence path |
 | **FastAPI + Pydantic v2** | API layer + schema-level null enforcement |
 

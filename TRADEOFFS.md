@@ -30,11 +30,11 @@ LangGraph makes state transitions explicit and debuggable. The `route_node` exit
 
 The `MomentBundle` validator rejects any output where `should_notify=False` but `notification_copy_en` is an empty string instead of `None`. This is the most common failure mode in production notification systems — sending a blank push notification because the LLM returned `""` instead of `null`. Enforcing it at the schema level makes it structurally impossible.
 
-### 5. TF-IDF FAISS over a vector database
+### 5. fastembed (ONNX) over sentence-transformers (PyTorch)
 
-50 products fit in memory. FAISS IndexFlatIP gives sub-millisecond retrieval with no server overhead. ChromaDB or Pinecone would be correct at 10,000+ products. At this catalog size they add complexity without benefit.
+The spec calls for sentence-transformers + cross-encoder reranking, which is architecturally correct. The retriever uses `fastembed` (BAAI/bge-small-en-v1.5, 384-dim) instead, which produces the same neural sentence embeddings via ONNX Runtime with zero PyTorch dependency.
 
-The spec called for sentence-transformers + cross-encoder reranking. PyTorch 2.7.1 on macOS 26 (Tahoe beta) crashes on import due to a threading bug in the C++ multiprocessing layer. TF-IDF with bigrams + cosine rerank preserves the identical three-stage retrieval contract. The retriever API is unchanged — swap in sentence-transformers when the upstream fix ships.
+Why: PyTorch 2.7.1 on macOS 26 (Tahoe beta) crashes on import due to a mutex threading bug in the C++ multiprocessing layer. ONNX Runtime sidesteps this entirely. The three-stage retrieval contract — semantic search → hard age filter → cosine rerank — is identical. The API surface of `ProductRetriever` is unchanged. Swapping to sentence-transformers + cross-encoder is a drop-in replacement once the upstream PyTorch fix ships.
 
 ### 6. Groq over self-hosted or OpenAI
 
