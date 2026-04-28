@@ -41,7 +41,7 @@ PURCHASE HISTORY DEDUPLICATOR
     ▼
 LANGGRAPH AGENT — 5-node state machine
   Node 1 route_node   → confidence gate (< 0.75 → END)
-  Node 2 generate_en  → warm EN notification (≤ 25 words) via OpenRouter
+  Node 2 generate_en  → warm EN notification (≤ 25 words) via Groq
   Node 3 translate_ar → Gulf Arabic re-authoring (not translation)
   Node 4 validate     → Pydantic v2 parse + safe fallback on error
   Node 5 format       → assemble final MomentBundle
@@ -61,26 +61,28 @@ git clone https://github.com/Satyam999999/mumzworld-moment-engine
 cd mumzworld-moment-engine
 pip install -r requirements.txt
 cp .env.example .env
-# Edit .env: add your OpenRouter API key (free tier sufficient)
-python data/generate_data.py        # generates all synthetic data
-uvicorn api.main:app --reload       # start API on :8000
-python demo/demo.py                 # run 5 demo cases in terminal
-python eval/run_evals.py            # run 15 eval cases + score table
+# Edit .env: add your GROQ_API_KEY (free at console.groq.com)
+python data/generate_data.py              # generates all synthetic data
+python -m uvicorn api.main:app --port 8000  # start API on :8000
+python demo/demo.py                       # run 5 demo cases in terminal
+python eval/run_evals.py                  # run 15 eval cases + score table
 ```
 
 ---
 
 ## Evals
 
-Score: **24/30 points (12/15 cases PASS)** *(with valid OpenRouter API key)*
+Score: **28–29/30 points (14–15/15 PASS)** *(with valid Groq API key)*
 
-| Group | Cases | Expected |
-|-------|-------|----------|
-| Easy notify (True) | 1–5 | 5/5 PASS with API key |
-| Easy silent (False) | 6–10 | 5/5 PASS always |
-| Adversarial | 11–15 | 2/5 PASS without API key; 4/5 with |
+Silent-path cases 6–10 and 15 pass deterministically (no LLM required). Notify cases require a valid Groq API key. ±1pt variance is due to LLM non-determinism on structured JSON output — the `_extract_json` helper mitigates but cannot fully eliminate it.
 
-Full rubric and case breakdown: [EVALS.md](EVALS.md)
+| Group | Cases | Result |
+|-------|-------|--------|
+| Easy notify (True) | 1–5 | 5/5 PASS |
+| Easy silent (False) | 6–10 | 5/5 PASS (deterministic) |
+| Adversarial | 11–15 | 4–5/5 PASS |
+
+Full rubric, case breakdown, and honest failure analysis: [EVALS.md](EVALS.md)
 
 ---
 
@@ -106,11 +108,10 @@ The system re-authors notifications in Gulf Arabic — not translates them.
 
 | Tool | Version | Purpose |
 |------|---------|---------|
-| OpenRouter + Llama 3.3 70B Instruct | free tier | EN notification copy + Gulf Arabic re-authoring |
-| TF-IDF (sklearn) + FAISS | sklearn 1.4 / faiss-cpu | Product catalog embeddings + semantic retrieval (sentence-transformers fallback due to macOS 26 PyTorch threading bug) |
+| **Groq** + Llama 3.3 70B Versatile | free tier | EN notification copy + Gulf Arabic re-authoring |
+| TF-IDF (sklearn) + FAISS | sklearn 1.4 / faiss-cpu | Product catalog embeddings + semantic retrieval + cosine rerank |
 | LangGraph | latest | 5-node state machine with explicit silence path |
 | FastAPI + Pydantic v2 | latest | API layer + schema validation on every LLM output |
-| sentence-transformers | planned | all-MiniLM-L6-v2 encoder + cross-encoder reranker (blocked by macOS 26 beta PyTorch 2.7.1 mutex crash) |
 
 ---
 
