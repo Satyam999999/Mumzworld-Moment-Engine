@@ -1,4 +1,16 @@
-import json, os, httpx
+import json, os, httpx, re
+# Groq: OpenAI-compatible API, free tier, fast inference
+GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
+GROQ_MODEL   = "llama-3.3-70b-versatile"
+
+def _extract_json(text: str) -> str:
+    """Strip markdown code fences and extract first JSON object."""
+    # Remove ```json ... ``` or ``` ... ``` wrappers
+    text = re.sub(r'^```(?:json)?\s*', '', text.strip(), flags=re.IGNORECASE)
+    text = re.sub(r'\s*```$', '', text.strip())
+    # Find first { ... } block if still messy
+    m = re.search(r'\{.*\}', text, re.DOTALL)
+    return m.group(0) if m else '{}'
 from typing import TypedDict, Annotated
 from src.schemas import MilestoneCheck, MomentBundle, ProductRecommendation
 from langgraph.graph import StateGraph, END
@@ -83,7 +95,7 @@ Return ONLY valid JSON:
 Do NOT invent product names, prices, or features not in the catalog above."""
 
     try:
-        state['_en_raw'] = _call_openrouter(prompt)
+        state['_en_raw'] = _call_groq(prompt)
     except Exception as e:
         print(f"[WARN] EN generation failed: {e}")
         state['_en_raw'] = '{}'
@@ -92,7 +104,7 @@ Do NOT invent product names, prices, or features not in the catalog above."""
 # ── Node 3: translate_ar ───────────────────────────────────────────
 def translate_ar_node(state: AgentState) -> AgentState:
     try:
-        en_data = json.loads(state.get('_en_raw', '{}'))
+        en_data = json.loads(_extract_json(state.get('_en_raw', '{}')))
     except json.JSONDecodeError:
         en_data = {}
     en_copy = en_data.get('notification_copy_en', '')
@@ -113,7 +125,7 @@ Return ONLY valid JSON:
 {{"notification_copy_ar": "..."}}"""
 
     try:
-        state['_ar_raw'] = _call_openrouter(prompt)
+        state['_ar_raw'] = _call_groq(prompt)
     except Exception as e:
         print(f"[WARN] AR generation failed: {e}")
         state['_ar_raw'] = '{}'
@@ -123,11 +135,11 @@ Return ONLY valid JSON:
 def validate_node(state: AgentState) -> AgentState:
     try:
         try:
-            en_data = json.loads(state.get('_en_raw', '{}'))
+            en_data = json.loads(_extract_json(state.get('_en_raw', '{}')))
         except json.JSONDecodeError:
             en_data = {}
         try:
-            ar_data = json.loads(state.get('_ar_raw', '{}'))
+            ar_data = json.loads(_extract_json(state.get('_ar_raw', '{}')))
         except json.JSONDecodeError:
             ar_data = {}
 
@@ -203,18 +215,17 @@ def build_agent():
     graph.add_edge("format", END)
     return graph.compile()
 
-# ── OpenRouter helper ──────────────────────────────────────────────
-def _call_openrouter(prompt: str, model: str = "meta-llama/llama-3.3-70b-instruct:free") -> str:
-    api_key = os.environ.get("OPENROUTER_API_KEY", "")
+# ── Groq helper (OpenAI-compatible) ────────────────────────────────
+def _call_groq(prompt: str, model: str = GROQ_MODEL) -> str:
+    api_key = os.environ.get("GROQ_API_KEY", "")
     if not api_key:
-        raise ValueError("OPENROUTER_API_KEY not set")
+        raise ValueError("GROQ_API_KEY not set in .env")
     try:
         response = httpx.post(
-            "https://openrouter.ai/api/v1/chat/completions",
+            GROQ_API_URL,
             headers={
                 "Authorization": f"Bearer {api_key}",
-                "Content-Type": "application/json",
-                "HTTP-Referer": "https://mumzworld-moment-engine.demo"
+                "Content-Type": "application/json"
             },
             json={
                 "model": model,
@@ -224,10 +235,14 @@ def _call_openrouter(prompt: str, model: str = "meta-llama/llama-3.3-70b-instruc
             },
             timeout=30.0
         )
-        return response.json()['choices'][0]['message']['content']
+        data = response.json()
+        if 'error' in data:
+            print(f"[WARN] Groq API error: {data['error']}")
+            return '{}'
+        return data['choices'][0]['message']['content']
     except httpx.TimeoutException:
-        print("[WARN] OpenRouter timeout — returning empty JSON for fallback")
+        print("[WARN] Groq timeout — returning empty JSON for fallback")
         return '{}'
     except Exception as e:
-        print(f"[WARN] OpenRouter error: {e}")
+        print(f"[WARN] Groq error: {e}")
         return '{}'
