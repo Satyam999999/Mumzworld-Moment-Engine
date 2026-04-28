@@ -1,139 +1,133 @@
 # Mumzworld Moment Engine
 ### Track A | Satyam Ghosh | IIITDM Jabalpur
 
-> "Mumzworld's retention problem isn't acquisition — it's silence.
->  This agent breaks it at exactly the right moment."
+---
+
+## The Problem
+
+Mumzworld's retention problem is not acquisition — it is silence.
+
+A mother buys a newborn car seat. Six months later her child needs 15 new products. She doesn't come back — not because she left Mumzworld, but because nobody told her it was time.
+
+The Moment Engine fixes this. It watches a child grow day by day, detects which developmental milestone is approaching in the next 30 days, and fires one warm, timely notification in the mother's language — English or native Gulf Arabic — with exactly the products she needs right now.
+
+When nothing is approaching, **it stays silent. An AI that knows when not to talk is rarer and harder to build than one that always does.**
 
 ---
 
-## The Problem (Why This Matters)
-
-Mumzworld's biggest retention problem is not acquisition — it is silence. A mother buys a newborn car seat. Six months pass. Her child is now rolling over, about to start solids, outgrowing the bassinet. She needs 15 new products. She does not come back — not because she left Mumzworld, but because nobody told her it was time.
-
-The Mumz Moment Engine fixes this. It watches a child grow — day by day, from purchase history and date of birth — detects which developmental milestone is approaching in the next 30 days, and fires one warm, timely, hyper-personalized notification in the mother's language (English or Gulf Arabic) with exactly the products she needs. If no milestone is approaching, it stays completely silent. **An AI that knows when to shut up is rarer and harder to build than one that always talks.**
-
----
-
-## System Architecture
+## Architecture
 
 ```
-TRIGGER: customer_id
+customer_id
     │
     ▼
-MILESTONE CALCULATOR (deterministic — zero LLM)
-  • computes child_age_days from DOB
-  • scans milestone_rules.json for any milestone in [today, today+30]
-  • returns MilestoneCheck(confidence, upcoming_milestone_id, days_until)
-  • if confidence < 0.75 → STOP → MomentBundle(should_notify=False)
+MILESTONE CALCULATOR  (deterministic — zero LLM)
+  · child_age_days from DOB
+  · scan 25 milestone rules for upcoming window [0–30 days]
+  · confidence < 0.75  →  STOP  →  MomentBundle(should_notify=False)
     │
-    ▼ (only if milestone found)
-PRODUCT RETRIEVER — TF-IDF FAISS + hard age filter + cosine rerank
-  • Stage 1: TF-IDF FAISS semantic search (top-10)
-  • Stage 2: hard age filter — age_min_months ≤ child_age ≤ age_max_months
-  • Stage 3: cosine rerank by milestone relevance
-  • if zero pass age filter → return [] (never hallucinate)
-    │
-    ▼
-PURCHASE HISTORY DEDUPLICATOR
-  • remove products already in purchase_history
-  • remove products incompatible_with[] owned products
+    ▼  (milestone found, confidence ≥ 0.75)
+PRODUCT RETRIEVER  (TF-IDF FAISS + hard age filter + cosine rerank)
+  · top-10 semantic candidates via FAISS
+  · hard age filter: age_min ≤ child_age ≤ age_max  [non-negotiable]
+  · cosine rerank by milestone relevance
+  · zero candidates after filter  →  return []  (never hallucinate)
     │
     ▼
-LANGGRAPH AGENT — 5-node state machine
-  Node 1 route_node   → confidence gate (< 0.75 → END)
-  Node 2 generate_en  → warm EN notification (≤ 25 words) via Groq
-  Node 3 translate_ar → Gulf Arabic re-authoring (not translation)
-  Node 4 validate     → Pydantic v2 parse + safe fallback on error
-  Node 5 format       → assemble final MomentBundle
+DEDUPLICATOR
+  · remove products in purchase_history
+  · remove products incompatible with owned items
     │
     ▼
-MomentBundle (Pydantic v2)
-  should_notify, moment_name_en/ar, notification_copy_en/ar,
-  recommendations[], reasoning, sources[], child_age_days, milestone_confidence
+LANGGRAPH AGENT  (5-node state machine)
+  route_node    →  confidence gate  (< 0.75 → END immediately)
+  generate_en   →  EN copy ≤ 25 words via Groq (llama-3.3-70b-versatile)
+  translate_ar  →  Gulf Arabic re-authoring  (not translation)
+  validate      →  Pydantic v2 parse + safe fallback on any error
+  format        →  assemble final MomentBundle
+    │
+    ▼
+MomentBundle  (Pydantic v2 — null hygiene enforced at schema level)
+  should_notify · moment_name_en/ar · notification_copy_en/ar
+  recommendations[] · reasoning · sources[] · milestone_confidence
 ```
 
 ---
 
-## Setup & Run (Under 5 Minutes)
+## Quickstart
 
 ```bash
 git clone https://github.com/Satyam999999/mumzworld-moment-engine
 cd mumzworld-moment-engine
 pip install -r requirements.txt
-cp .env.example .env
-# Edit .env: add your GROQ_API_KEY (free at console.groq.com)
-python data/generate_data.py              # generates all synthetic data
-python -m uvicorn api.main:app --port 8000  # start API on :8000
-python demo/demo.py                       # run 5 demo cases in terminal
-python eval/run_evals.py                  # run 15 eval cases + score table
+cp .env.example .env          # add GROQ_API_KEY (free at console.groq.com)
+python data/generate_data.py  # 25 milestones · 50 products · 20 customers
+python -m uvicorn api.main:app --port 8000
+```
+
+```bash
+# Notify path (C-001 — Fatima, Starting Solids, Arabic)
+curl -s -X POST http://localhost:8000/notify-check \
+  -H "Content-Type: application/json" -d '{"customer_id": "C-001"}' | python -m json.tool
+
+# Silent path (C-007 — dead zone, no milestone)
+curl -s -X POST http://localhost:8000/notify-check \
+  -H "Content-Type: application/json" -d '{"customer_id": "C-007"}' | python -m json.tool
 ```
 
 ---
 
 ## Evals
 
-Score: **28–29/30 points (14–15/15 PASS)** *(with valid Groq API key)*
+**Score: 28–29/30 (14–15/15 PASS)**
 
-Silent-path cases 6–10 and 15 pass deterministically (no LLM required). Notify cases require a valid Groq API key. ±1pt variance is due to LLM non-determinism on structured JSON output — the `_extract_json` helper mitigates but cannot fully eliminate it.
+Silent-path cases 6–10 and 15 pass deterministically — no LLM needed.
+Notify cases require a valid Groq key. ±1pt variance from LLM JSON non-determinism.
 
-| Group | Cases | Result |
-|-------|-------|--------|
-| Easy notify (True) | 1–5 | 5/5 PASS |
-| Easy silent (False) | 6–10 | 5/5 PASS (deterministic) |
-| Adversarial | 11–15 | 4–5/5 PASS |
+| Group | Cases | Score |
+|-------|-------|-------|
+| Easy notify | 1–5 | 5/5 |
+| Easy silent | 6–10 | 5/5 (deterministic) |
+| Adversarial | 11–15 | 4–5/5 |
 
-Full rubric, case breakdown, and honest failure analysis: [EVALS.md](EVALS.md)
+```bash
+python eval/run_evals.py   # rich score table, 15 cases live
+```
+
+Full rubric + honest failure analysis: [EVALS.md](EVALS.md)
 
 ---
 
 ## Arabic Quality
 
-The system re-authors notifications in Gulf Arabic — not translates them.
+The system **re-authors** notifications in Gulf Arabic — it does not translate.
 
-| Milestone | EN | AR |
-|-----------|----|----|
-| Starting Solids (Aisha, 6mo) | "Aisha, your little one is probably ready for first foods — here's what Mumzworld moms love." | "عزيزتي عائشة، وقت الفطام اقترب لطفلتك الصغيرة 🌿 هذه المنتجات أكثر ما أحبته الأمهات." |
-| First Steps (Sara, 12mo) | "Sara, first steps are just around the corner — time for proper first shoes and a safer space." | "قريباً ستمشي طفلتك يا سارة 👶 حان الوقت لأول حذاء ومساحة آمنة لها." |
-| Teething (Hessa, 5mo) | "Hessa, teething usually starts around now — these picks will help both of you get through it." | "عزيزتي حصة، مرحلة التسنين على الأبواب 🌙 هذه المنتجات ستساعدك وطفلك." |
+| | EN | AR |
+|-|----|-----|
+| Starting Solids | *"Fatima, starting solids in 5 days!"* | *"عزيزتي فاطمة، يبدو أن وقت بداية الأكل الصلب اقترب لطفلك 🌿"* |
+| First Steps | *"Sara, first steps are just around the corner."* | *"قريباً ستمشي طفلتك يا سارة 👶 حان الوقت لأول حذاء."* |
 
-**System prompt rules (verbatim in `translate_ar_node`):**
-- "طفلك" (your child), never "الطفل" (the child) — distant
-- Address as "عزيزتي" or first name, never "يا مستخدم"
-- "إتمام الشراء" for checkout — never anglicized transliterations
+System prompt rules enforced in `translate_ar_node`:
+- `طفلك` (your child) — never `الطفل` (the child, impersonal)
+- `عزيزتي` or first name — never `يا مستخدم`
 - ≤ 25 words — Gulf Arabic is warm but direct
+- Re-authored from scratch, not machine-translated
 
 ---
 
 ## Tooling
 
-| Tool | Version | Purpose |
-|------|---------|---------|
-| **Groq** + Llama 3.3 70B Versatile | free tier | EN notification copy + Gulf Arabic re-authoring |
-| TF-IDF (sklearn) + FAISS | sklearn 1.4 / faiss-cpu | Product catalog embeddings + semantic retrieval + cosine rerank |
-| LangGraph | latest | 5-node state machine with explicit silence path |
-| FastAPI + Pydantic v2 | latest | API layer + schema validation on every LLM output |
+| Tool | Purpose |
+|------|---------|
+| **Groq** · llama-3.3-70b-versatile (free) | EN copy generation + Gulf Arabic re-authoring |
+| **FAISS** · TF-IDF + cosine rerank | Product semantic retrieval |
+| **LangGraph** | 5-node state machine with explicit silence path |
+| **FastAPI + Pydantic v2** | API layer + schema-level null enforcement |
 
 ---
 
-## AI Usage Note
+## Why This Problem
 
-Used Claude (Antigravity) to scaffold `schemas.py`, `agent.py`, `retriever.py`, and data generation scripts. Wrote `milestone_calculator.py` deterministic logic manually — age math must not be LLM-generated or it is untestable. Iterated Arabic system prompt per Gulf Arabic quality guidelines. All 15 eval test cases written manually. The TF-IDF retriever fallback was designed manually after diagnosing the PyTorch 2.7.1 / macOS 26 threading incompatibility.
+Most applicants build Gift Finder or Product Comparison — both listed in the brief. This system is unlisted, maps directly to the JD language ("recommendation systems that follow a child's growth from pregnancy to pre-teen"), and solves the hardest retention metric: **repeat purchase rate**.
 
----
-
-## Time Log
-
-- Problem selection + architecture: 40 min
-- Synthetic data generation (25 milestones + 50 products + 20 customers): 35 min
-- Core pipeline (calculator + retriever + deduplicator): 2 hr
-- LangGraph agent + Arabic system prompt: 1 hr
-- Evals (writing + running + scoring): 45 min
-- README + EVALS + TRADEOFFS: 45 min
-- Debugging macOS 26 PyTorch threading: 30 min
-- **Total: ~6.5 hr**
-
----
-
-## One-Paragraph Summary
-
-The Mumzworld Moment Engine is a life-stage aware notification agent that detects when a child is approaching a developmental milestone — starting solids, first steps, teething, car seat upgrade — and delivers one warm, timely, personalized notification to the mother in English or native Gulf Arabic, with age-verified product recommendations grounded in Mumzworld's catalog via RAG. When no milestone is approaching, the agent stays completely silent. It uses deterministic age calculation (no LLM for facts), TF-IDF FAISS retrieval with a hard age-safety filter, LangGraph for stateful orchestration with an explicit silence path, and Pydantic v2 schema validation on every LLM output. Every recommendation is grounded. Every uncertainty is explicit. The system knows when to talk and, more importantly, when not to.
+The engineering insight isn't the notify path. It's the silence path — the confidence threshold, the deterministic age math, the Pydantic `model_validator` that makes empty-string-instead-of-null structurally impossible. Six of fifteen evals test exactly this.

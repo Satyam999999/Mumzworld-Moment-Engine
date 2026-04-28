@@ -1,53 +1,58 @@
-# Mumzworld Moment Engine — Architecture Tradeoffs
+# Architecture Tradeoffs
 
-## Why This Problem Over the Listed Examples
+## Why This Problem
 
-- **Gift Finder**: listed, ~80% of applicants will attempt it, low retention impact
-- **Product Comparison**: listed, content-generation heavy, doesn't drive repeat purchase
-- **Moment Engine**: unlisted, maps directly to "follow a child's growth from pregnancy to pre-teen" JD language, retention impact is measurable (repeat purchase rate), harder to build correctly — the null path alone requires correct age math, milestone windows, confidence thresholds, and Pydantic validation of null fields
+The brief listed Gift Finder, Product Comparison, and Reviews Synthesizer. This system builds none of them.
 
-## Why Silence Is the Hardest Engineering Decision
+The Moment Engine is unlisted because it's harder: it requires getting the *timing* right, not just the content. A recommendation at the wrong moment is noise. A recommendation at exactly the right moment is retention. The JD phrase "recommendation systems that follow a child's growth from pregnancy to pre-teen" describes this system exactly.
 
-Any system can recommend. Very few know when not to. The null path (`should_notify=False`) requires: correct age math, milestone window logic, confidence thresholds, and Pydantic validation enforcing null fields. Most demos skip the null path. We built and tested it explicitly — 6 of 15 evals test `should_notify=False`, and the Pydantic `model_validator` rejects empty strings (`""`) in place of null.
+The engineering differentiator isn't the notify path — it's the silence path. Six of fifteen evals test `should_notify: False`. Most AI demos never build it.
 
-## Why Deterministic Milestone Calculation (Not LLM)
+---
 
-LLMs hallucinate age ranges. A model saying "babies start solids at 3 months" when medical consensus is 4–6 months is a liability on a children's platform. `milestone_calculator.py` is 100% deterministic, unit-testable, and auditable — the LLM only handles language, never facts.
+## Core Design Decisions
 
-## Architecture Choices
+### 1. Deterministic age math — zero LLM for facts
 
-| Decision | Choice | Rationale |
-|----------|--------|-----------|
-| Vector DB | FAISS flat index | 50 products fit in memory; no server overhead; 5-min setup. ChromaDB correct at 10k+ products |
-| Reranker | TF-IDF cosine (fallback) | sentence-transformers / cross-encoder crashes on macOS 26 beta (PyTorch 2.7.1 mutex bug). TF-IDF preserves same 3-stage contract. Swap to cross-encoder when upstream fixes |
-| Orchestration | LangGraph | Explicit state transitions, debuggable, easy to add human-review node for safety-critical recs |
-| Inference | OpenRouter free tier | Sufficient for prototype; avoids paid key requirement; aligns with brief's free tooling encouragement |
-| Arabic | Re-authoring, not translation | Gulf Arabic has warmth patterns not preserved by translation. System prompt iterates on register, pronoun ("طفلك" not "الطفل"), and ending style |
+The milestone calculator uses pure date arithmetic. No LLM is ever called to determine a child's developmental stage.
 
-## What Was Cut
+Why: LLMs hallucinate developmental age ranges. A model saying "babies start solids at 3 months" when medical consensus is 4–6 months is a liability on a children's platform. Age math is testable, auditable, and deterministic. The LLM handles language only.
 
-- **Real product images**: scraping forbidden; production uses Mumzworld CDN
-- **Seasonal gating (MS-020 swimwear)**: requires current date + location; noted as next step
-- **Push delivery (FCM/WhatsApp API)**: out of scope; `/notify-check` is the integration surface
-- **Personalization beyond age**: purchase frequency, price sensitivity, brand affinity — requires behavioral data; architecture supports adding these as retrieval filters
-- **Multiple children per account**: current schema assumes one child; production needs `child_profiles[]`
+### 2. Hard age filter before the LLM sees any product
 
-## Known Failure Modes (Honest)
+The retriever enforces `age_min_months ≤ child_age ≤ age_max_months` as a structural gate — not a soft preference. Products that fail this filter never reach the agent. A product recommended to a child outside its age range is a safety issue, not a ranking error.
 
-| Failure | Impact | Fix |
-|---------|--------|-----|
-| Twin/multiple children | wrong milestone for second child | `child_profiles[]` array in schema |
-| Premature babies | calendar age ≠ developmental age | gestational age adjustment field |
-| Milestone clustering | 3 milestones in one window → only nearest fires | product decision, not a bug; log all in `sources[]` |
-| Arabic quality bounded by model | Gulf nuance varies by checkpoint | human review before production |
-| PyTorch on macOS 26 beta | sentence-transformers unavailable | fixed in next PyTorch release; TF-IDF fallback active |
-| OpenRouter rate limits | free tier may throttle under load | add retry logic with exponential backoff |
+### 3. LangGraph state machine over a simple chain
 
-## What's Next (Production Path)
+LangGraph makes state transitions explicit and debuggable. The `route_node` exits to `END` before calling Groq for all silent cases — the LLM is never called when there's nothing to say. A simple chain would have to handle this with if-statements scattered across the code. A state machine makes the silence path a first-class architectural construct.
 
-1. Replace TF-IDF retriever with sentence-transformers once macOS 26 / PyTorch 2.8 fixes threading
-2. Add `child_profiles[]` for multiple children per account
-3. Add purchase frequency and price sensitivity as retrieval rerank signals
-4. Add MS-020 seasonal gating (summer month detection by country)
-5. Connect to FCM/WhatsApp for actual push delivery
-6. Add human-review node in LangGraph for safety-flagged recommendations (allergy, choking hazard)
+### 4. Pydantic v2 model_validator for null hygiene
+
+The `MomentBundle` validator rejects any output where `should_notify=False` but `notification_copy_en` is an empty string instead of `None`. This is the most common failure mode in production notification systems — sending a blank push notification because the LLM returned `""` instead of `null`. Enforcing it at the schema level makes it structurally impossible.
+
+### 5. TF-IDF FAISS over a vector database
+
+50 products fit in memory. FAISS IndexFlatIP gives sub-millisecond retrieval with no server overhead. ChromaDB or Pinecone would be correct at 10,000+ products. At this catalog size they add complexity without benefit.
+
+The spec called for sentence-transformers + cross-encoder reranking. PyTorch 2.7.1 on macOS 26 (Tahoe beta) crashes on import due to a threading bug in the C++ multiprocessing layer. TF-IDF with bigrams + cosine rerank preserves the identical three-stage retrieval contract. The retriever API is unchanged — swap in sentence-transformers when the upstream fix ships.
+
+### 6. Groq over self-hosted or OpenAI
+
+Free tier, 500 tokens/s, OpenAI-compatible API. No billing setup required for evaluation. The `_call_groq` helper is a single function — swapping to any OpenAI-compatible endpoint (OpenRouter, Azure, local Ollama) is a one-line change.
+
+### 7. Re-authoring Arabic, not translating it
+
+The `translate_ar_node` system prompt instructs the model to write Gulf Arabic from scratch given the milestone and customer context — not to translate the English copy word for word. Literal translation produces Arabic that reads like a foreign-language label. Gulf Arabic has warmth patterns, pronoun choices (`طفلك` vs `الطفل`), and address conventions (`عزيزتي`) that only emerge from re-authoring with context.
+
+---
+
+## What's Not Built (and Why)
+
+| Feature | Why deferred |
+|---------|--------------|
+| Push delivery (FCM / WhatsApp) | Out of scope — `/notify-check` is the integration surface for any push layer |
+| Multiple children per account | `child_profiles[]` array is the schema extension; single-child first |
+| Seasonal gating (MS-020 swimwear) | Requires country + month lookup; straightforward to add |
+| Personalization beyond age | Purchase frequency, brand affinity — requires behavioral data not in brief |
+
+These are deferred, not forgotten. The architecture supports all of them as retrieval rerank signals or additional state machine nodes.
