@@ -68,9 +68,11 @@ def main():
     total_points = 0
     passed = 0
 
-    for tc in cases:
+    for i, tc in enumerate(cases):
         cid = tc['customer_id']
         console.print(f"  Running case {tc['case_id']}: {cid}...", end="\r")
+        if i > 0:
+            import time; time.sleep(1)  # avoid Groq rate-limiting on 15 rapid calls
         try:
             bundle = pipeline.run(cid)
             label, pts, notes = score_case(tc, bundle)
@@ -95,7 +97,7 @@ def main():
     console.print(table)
     console.print()
     console.print(f"[bold]Score: {total_points}/30 points ({passed}/15 cases PASS)[/bold]")
-    console.print(f"[dim]Note: Cases requiring OpenRouter API will PARTIAL if key not set.[/dim]")
+    console.print(f"[dim]Note: Notify cases require GROQ_API_KEY. Silent cases (6–10, 15) are deterministic.[/dim]")
 
 if __name__ == "__main__":
     main()

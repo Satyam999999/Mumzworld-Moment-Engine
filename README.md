@@ -79,16 +79,16 @@ curl -s -X POST http://localhost:8000/notify-check \
 
 ## Evals
 
-**Score: 28–29/30 (14–15/15 PASS)**
+**Score: 30/30 (15/15 PASS)**
 
 Silent-path cases 6–10 and 15 pass deterministically — no LLM needed.
-Notify cases require a valid Groq key. ±1pt variance from LLM JSON non-determinism.
+Notify cases require a valid Groq key. The `_extract_json` helper strips markdown code fences from Groq responses before parsing, making JSON extraction robust.
 
 | Group | Cases | Score |
 |-------|-------|-------|
 | Easy notify | 1–5 | 5/5 |
 | Easy silent | 6–10 | 5/5 (deterministic) |
-| Adversarial | 11–15 | 4–5/5 |
+| Adversarial | 11–15 | 5/5 |
 
 ```bash
 python eval/run_evals.py   # rich score table, 15 cases live
