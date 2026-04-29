@@ -28,16 +28,14 @@ One Dark). Turn off notifications.
 
 > "Mumzworld's retention problem isn't acquisition — it's silence.
 >
-> A mother buys a newborn car seat. Six months later, her child needs 15 new
-> products. She doesn't come back — not because she left Mumzworld — but
-> because nobody told her it was time.
+> A mother buys a car seat. Six months later her child needs 15 new products.
+> She doesn't come back — not because she left — because nobody told her it was time.
 >
-> I built the Mumz Moment Engine. It watches a child grow day by day, detects
-> which developmental milestone is approaching in the next 30 days, and fires
-> one warm, timely, personalized notification — in English or native Gulf Arabic —
-> with exactly the products she needs.
+> I built the Mumz Moment Engine. It detects which milestone is approaching
+> in the next 30 days and fires one warm, timely notification — English or Gulf Arabic —
+> with exactly the right products.
 >
-> And when nothing is approaching? It stays completely silent.
+> When nothing is approaching? Complete silence.
 > An AI that knows when to shut up is harder to build than one that always talks."
 
 ---
