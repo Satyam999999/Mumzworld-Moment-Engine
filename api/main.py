@@ -1,13 +1,24 @@
 from dotenv import load_dotenv; load_dotenv()
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from src.pipeline import MomentEnginePipeline
 from src.schemas import MomentBundle
 import time, json
 
+# Custom response class that renders Arabic (and all Unicode) as readable text,
+# not \uXXXX escape sequences.
+class UnicodeJSONResponse(JSONResponse):
+    def render(self, content) -> bytes:
+        return json.dumps(
+            content, ensure_ascii=False, allow_nan=False,
+            indent=None, separators=(",", ":")
+        ).encode("utf-8")
+
 app = FastAPI(title="Mumzworld Moment Engine", version="1.0.0",
-              description="Life-stage aware notification personalizer for Mumzworld mothers.")
+              description="Life-stage aware notification personalizer for Mumzworld mothers.",
+              default_response_class=UnicodeJSONResponse)
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
 pipeline = MomentEnginePipeline(
