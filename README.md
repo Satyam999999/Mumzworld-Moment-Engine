@@ -27,7 +27,7 @@ MILESTONE CALCULATOR  (deterministic — zero LLM)
   · confidence < 0.75  →  STOP  →  MomentBundle(should_notify=False)
     │
     ▼  (milestone found, confidence ≥ 0.75)
-PRODUCT RETRIEVER  (TF-IDF FAISS + hard age filter + cosine rerank)
+PRODUCT RETRIEVER  (fastembed ONNX neural embeddings + FAISS + hard age filter)
   · top-10 semantic candidates via FAISS
   · hard age filter: age_min ≤ child_age ≤ age_max  [non-negotiable]
   · cosine rerank by milestone relevance
@@ -57,7 +57,7 @@ MomentBundle  (Pydantic v2 — null hygiene enforced at schema level)
 ## Quickstart
 
 ```bash
-git clone https://github.com/Satyam999999/mumzworld-moment-engine
+git clone https://github.com/Satyam999999/Mumzworld-Moment-Engine
 cd mumzworld-moment-engine
 pip install -r requirements.txt
 cp .env.example .env          # add GROQ_API_KEY (free at console.groq.com)
@@ -68,11 +68,13 @@ python -m uvicorn api.main:app --port 8000
 ```bash
 # Notify path (C-001 — Fatima, Starting Solids, Arabic)
 curl -s -X POST http://localhost:8000/notify-check \
-  -H "Content-Type: application/json" -d '{"customer_id": "C-001"}' | python -m json.tool
+  -H "Content-Type: application/json" -d '{"customer_id": "C-001"}' | \
+  python3 -c "import sys,json; print(json.dumps(json.load(sys.stdin), ensure_ascii=False, indent=2))"
 
 # Silent path (C-007 — dead zone, no milestone)
 curl -s -X POST http://localhost:8000/notify-check \
-  -H "Content-Type: application/json" -d '{"customer_id": "C-007"}' | python -m json.tool
+  -H "Content-Type: application/json" -d '{"customer_id": "C-007"}' | \
+  python3 -c "import sys,json; print(json.dumps(json.load(sys.stdin), ensure_ascii=False, indent=2))"
 ```
 
 ---
@@ -123,6 +125,7 @@ System prompt rules enforced in `translate_ar_node`:
 | **fastembed** · BAAI/bge-small-en-v1.5 (ONNX) + FAISS | Neural sentence embeddings + semantic retrieval + cosine rerank |
 | **LangGraph** | 5-node state machine with explicit silence path |
 | **FastAPI + Pydantic v2** | API layer + schema-level null enforcement |
+| **Claude (Antigravity / Google DeepMind)** | Scaffolded `schemas.py`, `agent.py`, `retriever.py`, data generation scripts. Milestone calculator deterministic logic written manually — age math must not be LLM-generated. Arabic system prompt iterated manually per Gulf Arabic quality guidelines. All 15 eval cases written manually. |
 
 ---
 
